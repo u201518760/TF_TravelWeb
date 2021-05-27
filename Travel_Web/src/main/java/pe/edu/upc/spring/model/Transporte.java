@@ -5,9 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
-import pe.edu.upc.entity.Transporte;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,19 +24,22 @@ private static final long serialVersionUID = 1L;
 	private String tipoTransporte;
 	
 	@Column(name="nombreEmpresa", nullable=false, length=30)
-	private String nombreEmpresa;
-
+	private String Empresa;
+	
+	@Column(name="precioTransporte", nullable=false)
+	private int precioTransporte;
+	
 	public Transporte() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Transporte(int idTransporte, String tipoTransporte, String empresa, int precio) {
+	public Transporte(int idTransporte, String tipoTransporte, String empresa, int precioTransporte) {
 		super();
 		this.idTransporte = idTransporte;
 		this.tipoTransporte = tipoTransporte;
 		Empresa = empresa;
-		this.precio = precio;
+		this.precioTransporte = precioTransporte;
 	}
 
 	public int getIdTransporte() {
@@ -66,12 +66,12 @@ private static final long serialVersionUID = 1L;
 		Empresa = empresa;
 	}
 
-	public int getPrecio() {
-		return precio;
+	public int getPrecioTransporte() {
+		return precioTransporte;
 	}
 
-	public void setPrecio(int precio) {
-		this.precio = precio;
+	public void setPrecioTransporte(int precioTransporte) {
+		this.precioTransporte = precioTransporte;
 	}
 
 	@Override
@@ -80,7 +80,7 @@ private static final long serialVersionUID = 1L;
 		int result = 1;
 		result = prime * result + ((Empresa == null) ? 0 : Empresa.hashCode());
 		result = prime * result + idTransporte;
-		result = prime * result + precio;
+		result = prime * result + precioTransporte;
 		result = prime * result + ((tipoTransporte == null) ? 0 : tipoTransporte.hashCode());
 		return result;
 	}
@@ -101,7 +101,7 @@ private static final long serialVersionUID = 1L;
 			return false;
 		if (idTransporte != other.idTransporte)
 			return false;
-		if (precio != other.precio)
+		if (precioTransporte != other.precioTransporte)
 			return false;
 		if (tipoTransporte == null) {
 			if (other.tipoTransporte != null)
