@@ -22,7 +22,7 @@ import pe.edu.upc.spring.service.ITuristaService;
 
 
 @Controller
-@RequestMapping("/transporte")
+@RequestMapping("/turista")
 public class TuristaController {
 
 	@Autowired
@@ -44,8 +44,8 @@ public class TuristaController {
 	
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar(Model model) {
-		model.addAttribute("transporte", new Turista());
-		return "transporte";
+		model.addAttribute("turista", new Turista());
+		return "turista";
 		
 	}
 	
@@ -55,14 +55,14 @@ public class TuristaController {
 			throws ParseException 
 	{
 		if (binRes.hasErrors())
-			return "transporte";
+			return "turista";
 		else {
 			boolean flag = tService.insertar(objTurista);
 			if (flag) 
-				return "redirect:/transporte/listar";
+				return "redirect:/turista/listar";
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
-				return "redirect:/transporte/irRegistrar";
+				return "redirect:/turista/irRegistrar";
 			}
 		}
 	}
@@ -75,11 +75,11 @@ public class TuristaController {
 		Optional<Turista> objTurista = tService.listarId(id);
 		if (objTurista == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
-			return "redirect:/transporte/listar";
+			return "redirect:/turista/listar";
 		}
 		else {
-			model.addAttribute("transporte", objTurista);
-			return "transporte";
+			model.addAttribute("turista", objTurista);
+			return "turista";
 		}
 	}
 	
