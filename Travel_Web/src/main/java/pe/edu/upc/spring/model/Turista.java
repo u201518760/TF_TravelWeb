@@ -34,13 +34,14 @@ private static final long serialVersionUID = 1L;
 	
 	@Column(name="passTurista", nullable=false, length=30)
 	private String passTurista;
-	
+
 	public Turista() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Turista(int idTurista, String nombreTurista, String dniTurista, String tlfTurista,String userTurista,String passTurista) {
+	public Turista(int idTurista, String nombreTurista, String dniTurista, String tlfTurista, String userTurista,
+			String passTurista) {
 		super();
 		this.idTurista = idTurista;
 		this.nombreTurista = nombreTurista;
@@ -65,81 +66,39 @@ private static final long serialVersionUID = 1L;
 	public void setNombreTurista(String nombreTurista) {
 		this.nombreTurista = nombreTurista;
 	}
-	
-	public int getDniTurista() {
+
+	public String getDniTurista() {
 		return dniTurista;
 	}
 
 	public void setDniTurista(String dniTurista) {
 		this.dniTurista = dniTurista;
 	}
-	
-	public int getTlfTurista() {
+
+	public String getTlfTurista() {
 		return tlfTurista;
 	}
 
 	public void setTlfTurista(String tlfTurista) {
 		this.tlfTurista = tlfTurista;
 	}
-	
-	public int getUserTurista() {
-		return dniTurista;
+
+	public String getUserTurista() {
+		return userTurista;
 	}
 
 	public void setUserTurista(String userTurista) {
 		this.userTurista = userTurista;
 	}
-	
-	public int getPassTurista() {
-		return dniTurista;
+
+	public String getPassTurista() {
+		return passTurista;
 	}
 
 	public void setPassTurista(String passTurista) {
 		this.passTurista = passTurista;
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((nombreTurista == null) ? 0 : nombreTurista.hashCode());
-		result = prime * result + idTurista;
-		result = prime * result + tlfTurista;
-		result = prime * result + userTurista;
-		result = prime * result + passTurista;
-		result = prime * result + ((dniTurista == null) ? 0 : dniTurista.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Turista other = (Turista) obj;
-		if (nombreTurista == null) {
-			if (other.nombreTurista != null)
-				return false;
-		} else if (!nombreTurista.equals(other.nombreTurista))
-			return false;
-		if (idTurista != other.idTurista)
-			return false;
-		if (tlfTurista != other.tlfTurista)
-			return false;
-		if (userTurista != other.userTurista)
-			return false;
-		if (passTurista != other.passTurista)
-			return false;
-		if (dniTurista == null) {
-			if (other.dniTurista != null)
-				return false;
-		} else if (!dniTurista.equals(other.dniTurista))
-			return false;
-		return true;
-	}
+	
 	
 	
 }

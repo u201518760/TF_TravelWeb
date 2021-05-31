@@ -85,44 +85,8 @@ private static final long serialVersionUID = 1L;
 
 
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((categoria == null) ? 0 : categoria.hashCode());
-		result = prime * result + idHotel;
-		result = prime * result + ((nombreHotel == null) ? 0 : nombreHotel.hashCode());
-		result = prime * result + precioHotel;
-		return result;
-	}
-
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Hotel other = (Hotel) obj;
-		if (categoria == null) {
-			if (other.categoria != null)
-				return false;
-		} else if (!categoria.equals(other.categoria))
-			return false;
-		if (idHotel != other.idHotel)
-			return false;
-		if (nombreHotel == null) {
-			if (other.nombreHotel != null)
-				return false;
-		} else if (!nombreHotel.equals(other.nombreHotel))
-			return false;
-		if (precioHotel != other.precioHotel)
-			return false;
-		return true;
-	}
+	
+	
 	
 	
 }

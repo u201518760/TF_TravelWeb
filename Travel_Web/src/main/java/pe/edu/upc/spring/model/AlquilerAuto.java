@@ -62,39 +62,6 @@ private static final long serialVersionUID = 1L;
 		this.precioAlquilerAuto = precioAlquilerAuto;
 	}
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((modeloAlquilerAuto == null) ? 0 : modeloAlquilerAuto.hashCode());
-		result = prime * result + idAlquilerAuto;
-		result = prime * result + ((precioAlquilerAuto == null) ? 0 : precioAlquilerAuto.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AlquilerAuto other = (AlquilerAuto) obj;
-		if (modeloAlquilerAuto == null) {
-			if (other.modeloAlquilerAuto != null)
-				return false;
-		} else if (!modeloAlquilerAuto.equals(other.modeloAlquilerAuto))
-			return false;
-		if (idAlquilerAuto != other.idAlquilerAuto)
-			return false;
-		if (precioAlquilerAuto == null) {
-			if (other.precioAlquilerAuto != null)
-				return false;
-		} else if (!precioAlquilerAuto.equals(other.precioAlquilerAuto))
-			return false;
-		return true;
-	}
 	
 	
 }
