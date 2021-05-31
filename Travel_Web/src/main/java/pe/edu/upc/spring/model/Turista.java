@@ -20,26 +20,34 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idTurista;
 	
-	@Column(name="tipoTurista",nullable=false,length=20)
-	private String tipoTurista;
+	@Column(name="nombreTurista",nullable=false,length=20)
+	private String nombreTurista;
 	
-	@Column(name="nombreEmpresa", nullable=false, length=30)
-	private String Empresa;
+	@Column(name="dniTurista", nullable=false, length=30)
+	private String dniTurista;
 	
-	@Column(name="precioTurista", nullable=false)
-	private int precioTurista;
+	@Column(name="tlfTurista", nullable=false, length=30)
+	private String tlfTurista;
+	
+	@Column(name="userTurista", nullable=false, length=30)
+	private String userTurista;
+	
+	@Column(name="passTurista", nullable=false, length=30)
+	private String passTurista;
 	
 	public Turista() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Turista(int idTurista, String tipoTurista, String empresa, int precioTurista) {
+	public Turista(int idTurista, String nombreTurista, String dniTurista, String tlfTurista,String userTurista,String passTurista) {
 		super();
 		this.idTurista = idTurista;
-		this.tipoTurista = tipoTurista;
-		Empresa = empresa;
-		this.precioTurista = precioTurista;
+		this.nombreTurista = nombreTurista;
+		this.dniTurista = dniTurista;
+		this.tlfTurista = tlfTurista;
+		this.userTurista = userTurista;
+		this.passTurista = passTurista;
 	}
 
 	public int getIdTurista() {
@@ -50,38 +58,56 @@ private static final long serialVersionUID = 1L;
 		this.idTurista = idTurista;
 	}
 
-	public String getTipoTurista() {
-		return tipoTurista;
+	public String getNombreTurista() {
+		return nombreTurista;
 	}
 
-	public void setTipoTurista(String tipoTurista) {
-		this.tipoTurista = tipoTurista;
+	public void setNombreTurista(String nombreTurista) {
+		this.nombreTurista = nombreTurista;
+	}
+	
+	public int getDniTurista() {
+		return dniTurista;
 	}
 
-	public String getEmpresa() {
-		return Empresa;
+	public void setDniTurista(String dniTurista) {
+		this.dniTurista = dniTurista;
+	}
+	
+	public int getTlfTurista() {
+		return tlfTurista;
 	}
 
-	public void setEmpresa(String empresa) {
-		Empresa = empresa;
+	public void setTlfTurista(String tlfTurista) {
+		this.tlfTurista = tlfTurista;
+	}
+	
+	public int getUserTurista() {
+		return dniTurista;
 	}
 
-	public int getPrecioTurista() {
-		return precioTurista;
+	public void setUserTurista(String userTurista) {
+		this.userTurista = userTurista;
+	}
+	
+	public int getPassTurista() {
+		return dniTurista;
 	}
 
-	public void setPrecioTurista(int precioTurista) {
-		this.precioTurista = precioTurista;
+	public void setPassTurista(String passTurista) {
+		this.passTurista = passTurista;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Empresa == null) ? 0 : Empresa.hashCode());
+		result = prime * result + ((nombreTurista == null) ? 0 : nombreTurista.hashCode());
 		result = prime * result + idTurista;
-		result = prime * result + precioTurista;
-		result = prime * result + ((tipoTurista == null) ? 0 : tipoTurista.hashCode());
+		result = prime * result + tlfTurista;
+		result = prime * result + userTurista;
+		result = prime * result + passTurista;
+		result = prime * result + ((dniTurista == null) ? 0 : dniTurista.hashCode());
 		return result;
 	}
 
@@ -94,19 +120,23 @@ private static final long serialVersionUID = 1L;
 		if (getClass() != obj.getClass())
 			return false;
 		Turista other = (Turista) obj;
-		if (Empresa == null) {
-			if (other.Empresa != null)
+		if (nombreTurista == null) {
+			if (other.nombreTurista != null)
 				return false;
-		} else if (!Empresa.equals(other.Empresa))
+		} else if (!nombreTurista.equals(other.nombreTurista))
 			return false;
 		if (idTurista != other.idTurista)
 			return false;
-		if (precioTurista != other.precioTurista)
+		if (tlfTurista != other.tlfTurista)
 			return false;
-		if (tipoTurista == null) {
-			if (other.tipoTurista != null)
+		if (userTurista != other.userTurista)
+			return false;
+		if (passTurista != other.passTurista)
+			return false;
+		if (dniTurista == null) {
+			if (other.dniTurista != null)
 				return false;
-		} else if (!tipoTurista.equals(other.tipoTurista))
+		} else if (!dniTurista.equals(other.dniTurista))
 			return false;
 		return true;
 	}

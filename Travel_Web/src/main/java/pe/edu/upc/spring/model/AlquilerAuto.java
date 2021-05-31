@@ -20,11 +20,8 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idAlquilerAuto;
 	
-	@Column(name="tipoAlquilerAuto",nullable=false,length=20)
-	private String tipoAlquilerAuto;
-	
-	@Column(name="nombreEmpresa", nullable=false, length=30)
-	private String Empresa;
+	@Column(name="modeloAlquilerAuto",nullable=false,length=20)
+	private String modeloAlquilerAuto;
 	
 	@Column(name="precioAlquilerAuto", nullable=false)
 	private int precioAlquilerAuto;
@@ -34,14 +31,13 @@ private static final long serialVersionUID = 1L;
 		// TODO Auto-generated constructor stub
 	}
 
-	public AlquilerAuto(int idAlquilerAuto, String tipoAlquilerAuto, String empresa, int precioAlquilerAuto) {
+	public AlquilerAuto(int idAlquilerAuto, String modeloAlquilerAuto, int precioAlquilerAuto) {
 		super();
 		this.idAlquilerAuto = idAlquilerAuto;
-		this.tipoAlquilerAuto = tipoAlquilerAuto;
-		Empresa = empresa;
+		this.modeloAlquilerAuto = modeloAlquilerAuto;
 		this.precioAlquilerAuto = precioAlquilerAuto;
-	}
-
+	}	
+	
 	public int getIdAlquilerAuto() {
 		return idAlquilerAuto;
 	}
@@ -50,20 +46,12 @@ private static final long serialVersionUID = 1L;
 		this.idAlquilerAuto = idAlquilerAuto;
 	}
 
-	public String getTipoAlquilerAuto() {
-		return tipoAlquilerAuto;
+	public String getModeloAlquilerAuto() {
+		return modeloAlquilerAuto;
 	}
 
-	public void setTipoAlquilerAuto(String tipoAlquilerAuto) {
-		this.tipoAlquilerAuto = tipoAlquilerAuto;
-	}
-
-	public String getEmpresa() {
-		return Empresa;
-	}
-
-	public void setEmpresa(String empresa) {
-		Empresa = empresa;
+	public void setModeloAlquilerAuto(String modeloAlquilerAuto) {
+		this.modeloAlquilerAuto = modeloAlquilerAuto;
 	}
 
 	public int getPrecioAlquilerAuto() {
@@ -73,15 +61,14 @@ private static final long serialVersionUID = 1L;
 	public void setPrecioAlquilerAuto(int precioAlquilerAuto) {
 		this.precioAlquilerAuto = precioAlquilerAuto;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Empresa == null) ? 0 : Empresa.hashCode());
+		result = prime * result + ((modeloAlquilerAuto == null) ? 0 : modeloAlquilerAuto.hashCode());
 		result = prime * result + idAlquilerAuto;
-		result = prime * result + precioAlquilerAuto;
-		result = prime * result + ((tipoAlquilerAuto == null) ? 0 : tipoAlquilerAuto.hashCode());
+		result = prime * result + ((precioAlquilerAuto == null) ? 0 : precioAlquilerAuto.hashCode());
 		return result;
 	}
 
@@ -94,22 +81,21 @@ private static final long serialVersionUID = 1L;
 		if (getClass() != obj.getClass())
 			return false;
 		AlquilerAuto other = (AlquilerAuto) obj;
-		if (Empresa == null) {
-			if (other.Empresa != null)
+		if (modeloAlquilerAuto == null) {
+			if (other.modeloAlquilerAuto != null)
 				return false;
-		} else if (!Empresa.equals(other.Empresa))
+		} else if (!modeloAlquilerAuto.equals(other.modeloAlquilerAuto))
 			return false;
 		if (idAlquilerAuto != other.idAlquilerAuto)
 			return false;
-		if (precioAlquilerAuto != other.precioAlquilerAuto)
-			return false;
-		if (tipoAlquilerAuto == null) {
-			if (other.tipoAlquilerAuto != null)
+		if (precioAlquilerAuto == null) {
+			if (other.precioAlquilerAuto != null)
 				return false;
-		} else if (!tipoAlquilerAuto.equals(other.tipoAlquilerAuto))
+		} else if (!precioAlquilerAuto.equals(other.precioAlquilerAuto))
 			return false;
 		return true;
 	}
 	
 	
 }
+
