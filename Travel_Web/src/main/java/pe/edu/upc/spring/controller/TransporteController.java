@@ -16,17 +16,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 
-import pe.edu.upc.spring.model.Turista;
-import pe.edu.upc.spring.service.ITuristaService;
+import pe.edu.upc.spring.model.Transporte;
+import pe.edu.upc.spring.service.ITransporteService;
 
 
 
 @Controller
 @RequestMapping("/transporte")
-public class TuristaController {
+public class TransporteController {
 
 	@Autowired
-	private ITuristaService tService;
+	private ITransporteService tService;
 	
 	
 	@RequestMapping("/bienvenido")
@@ -36,28 +36,28 @@ public class TuristaController {
 	}
 	
 	@RequestMapping("/")
-	public String irPaginaListadoTuristas(Map<String, Object> model) {
-		model.put("listaTuristas", tService.listar());
-		return "listTurista";
+	public String irPaginaListadoTransportes(Map<String, Object> model) {
+		model.put("listaTransportes", tService.listar());
+		return "listTransporte";
 
 	}
 	
 	@RequestMapping("/irRegistrar")
 	public String irPaginaRegistrar(Model model) {
-		model.addAttribute("transporte", new Turista());
+		model.addAttribute("transporte", new Transporte());
 		return "transporte";
 		
 	}
 	
 	
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Turista objTurista, BindingResult binRes, Model model) 
+	public String registrar(@ModelAttribute Transporte objTransporte, BindingResult binRes, Model model) 
 			throws ParseException 
 	{
 		if (binRes.hasErrors())
 			return "transporte";
 		else {
-			boolean flag = tService.insertar(objTurista);
+			boolean flag = tService.insertar(objTransporte);
 			if (flag) 
 				return "redirect:/transporte/listar";
 			else {
@@ -72,13 +72,13 @@ public class TuristaController {
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) 
 			throws ParseException 
 	{
-		Optional<Turista> objTurista = tService.listarId(id);
-		if (objTurista == null) {
+		Optional<Transporte> objTransporte = tService.listarId(id);
+		if (objTransporte == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/transporte/listar";
 		}
 		else {
-			model.addAttribute("transporte", objTurista);
+			model.addAttribute("transporte", objTransporte);
 			return "transporte";
 		}
 	}
@@ -89,22 +89,22 @@ public class TuristaController {
 		try {
 			if(id!=null && id>0) {
 				tService.eliminar(id);
-				model.put("listaTuristas", tService.listar());
+				model.put("listaTransportes", tService.listar());
 			}
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un error");
-			model.put("listaTuristas", tService.listar());
+			model.put("listaTransportes", tService.listar());
 		}
-		return "listTurista";
+		return "listTransporte";
 	}
 	
 	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object>model) {
-		model.put("listaTuristas", tService.listar());
-		return "listTurista";
+		model.put("listaTransportes", tService.listar());
+		return "listTransporte";
 	}
 	
 	
