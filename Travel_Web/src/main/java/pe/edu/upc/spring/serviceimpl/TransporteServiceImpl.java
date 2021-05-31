@@ -7,22 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pe.edu.upc.spring.model.Turista;
-import pe.edu.upc.spring.repository.ITuristaRepository;
-import pe.edu.upc.spring.service.ITuristaService;
+import pe.edu.upc.spring.model.Transporte;
+import pe.edu.upc.spring.repository.ITransporteRepository;
+import pe.edu.upc.spring.service.ITransporteService;
 
 @Service
-public class TuristaServiceImpl implements ITuristaService{
+public class TransporteServiceImpl implements ITransporteService{
 
 	@Autowired
-	private ITuristaRepository dTurista;
+	private ITransporteRepository dTransporte;
 	
 	
 	@Override
 	@Transactional
-	public boolean insertar(Turista transporte) {
-		Turista objTurista = dTurista.save(transporte);
-		if(objTurista ==null)
+	public boolean insertar(Transporte transporte) {
+		Transporte objTransporte = dTransporte.save(transporte);
+		if(objTransporte ==null)
 			return false;
 		else
 		return true;
@@ -31,10 +31,10 @@ public class TuristaServiceImpl implements ITuristaService{
 	
 	@Override
 	@Transactional
-	public boolean modificar(Turista transporte) {
+	public boolean modificar(Transporte transporte) {
 		boolean flag = false;
 		try {
-			dTurista.save(transporte);
+			dTransporte.save(transporte);
 			flag = true;
 		}
 		catch(Exception ex) {
@@ -45,23 +45,23 @@ public class TuristaServiceImpl implements ITuristaService{
 	
 	@Override
 	@Transactional
-	public void eliminar(int idTurista) {
-		dTurista.deleteById(idTurista);
+	public void eliminar(int idTransporte) {
+		dTransporte.deleteById(idTransporte);
 		
 	}
 	
 	
 	@Override
 	@Transactional(readOnly=true)
-	public Optional<Turista> listarId(int idTurista) {
-		return dTurista.findById(idTurista);
+	public Optional<Transporte> listarId(int idTransporte) {
+		return dTransporte.findById(idTransporte);
 	}
 	
 	@Override
 	@Transactional(readOnly=true)
-	public List<Turista> listar() {
+	public List<Transporte> listar() {
 		
-		return dTurista.findAll();
+		return dTransporte.findAll();
 	}
 }
 

@@ -12,50 +12,50 @@ import javax.persistence.Id;
 
 @Entity
 @Table(name="transporte")
-public class Turista implements Serializable{
+public class Transporte implements Serializable{
 
 private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idTurista;
+	private int idTransporte;
 	
-	@Column(name="tipoTurista",nullable=false,length=20)
-	private String tipoTurista;
+	@Column(name="tipoTransporte",nullable=false,length=20)
+	private String tipoTransporte;
 	
 	@Column(name="nombreEmpresa", nullable=false, length=30)
 	private String Empresa;
 	
-	@Column(name="precioTurista", nullable=false)
-	private int precioTurista;
+	@Column(name="precioTransporte", nullable=false)
+	private int precioTransporte;
 	
-	public Turista() {
+	public Transporte() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Turista(int idTurista, String tipoTurista, String empresa, int precioTurista) {
+	public Transporte(int idTransporte, String tipoTransporte, String empresa, int precioTransporte) {
 		super();
-		this.idTurista = idTurista;
-		this.tipoTurista = tipoTurista;
+		this.idTransporte = idTransporte;
+		this.tipoTransporte = tipoTransporte;
 		Empresa = empresa;
-		this.precioTurista = precioTurista;
+		this.precioTransporte = precioTransporte;
 	}
 
-	public int getIdTurista() {
-		return idTurista;
+	public int getIdTransporte() {
+		return idTransporte;
 	}
 
-	public void setIdTurista(int idTurista) {
-		this.idTurista = idTurista;
+	public void setIdTransporte(int idTransporte) {
+		this.idTransporte = idTransporte;
 	}
 
-	public String getTipoTurista() {
-		return tipoTurista;
+	public String getTipoTransporte() {
+		return tipoTransporte;
 	}
 
-	public void setTipoTurista(String tipoTurista) {
-		this.tipoTurista = tipoTurista;
+	public void setTipoTransporte(String tipoTransporte) {
+		this.tipoTransporte = tipoTransporte;
 	}
 
 	public String getEmpresa() {
@@ -66,12 +66,12 @@ private static final long serialVersionUID = 1L;
 		Empresa = empresa;
 	}
 
-	public int getPrecioTurista() {
-		return precioTurista;
+	public int getPrecioTransporte() {
+		return precioTransporte;
 	}
 
-	public void setPrecioTurista(int precioTurista) {
-		this.precioTurista = precioTurista;
+	public void setPrecioTransporte(int precioTransporte) {
+		this.precioTransporte = precioTransporte;
 	}
 
 	@Override
@@ -79,9 +79,9 @@ private static final long serialVersionUID = 1L;
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((Empresa == null) ? 0 : Empresa.hashCode());
-		result = prime * result + idTurista;
-		result = prime * result + precioTurista;
-		result = prime * result + ((tipoTurista == null) ? 0 : tipoTurista.hashCode());
+		result = prime * result + idTransporte;
+		result = prime * result + precioTransporte;
+		result = prime * result + ((tipoTransporte == null) ? 0 : tipoTransporte.hashCode());
 		return result;
 	}
 
@@ -93,20 +93,20 @@ private static final long serialVersionUID = 1L;
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Turista other = (Turista) obj;
+		Transporte other = (Transporte) obj;
 		if (Empresa == null) {
 			if (other.Empresa != null)
 				return false;
 		} else if (!Empresa.equals(other.Empresa))
 			return false;
-		if (idTurista != other.idTurista)
+		if (idTransporte != other.idTransporte)
 			return false;
-		if (precioTurista != other.precioTurista)
+		if (precioTransporte != other.precioTransporte)
 			return false;
-		if (tipoTurista == null) {
-			if (other.tipoTurista != null)
+		if (tipoTransporte == null) {
+			if (other.tipoTransporte != null)
 				return false;
-		} else if (!tipoTurista.equals(other.tipoTurista))
+		} else if (!tipoTransporte.equals(other.tipoTransporte))
 			return false;
 		return true;
 	}
