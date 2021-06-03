@@ -70,10 +70,10 @@
 								<tr th:each="res:${listaDepartamentos}">
 									<td th:text="${res.idDepartamento}"></td>
 							        <td th:text="${res.nombreDepartamento}"></td>
-							        <td><a style="border-bottom-color: green" th:href="@{/departamento/eliminar?id=}+${res.idRestaurante}" 
+							        <td><a style="border-bottom-color: green" th:href="@{/departamento/eliminar?id=}+${res.idDepartamento}" 
 							        	id="add-row" type="button" class="btn btn-primary">
 							        	<span class="glyphicon glyphicon-trash"></span></a></td>
-							        <td><a style="border-bottom-color: green" th:href="@{'/departamento/modificar/'}+${res.idRestaurante}"
+							        <td><a style="border-bottom-color: green" th:href="@{'/departamento/modificar/'}+${res.idDepartamento}"
 							        	id="add-row" type="button" class="btn btn-primary">
 							        	<span class="glyphicon glyphicon-pencil"></span></a></td>
 							    </tr>
