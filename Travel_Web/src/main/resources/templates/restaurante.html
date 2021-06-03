@@ -33,6 +33,8 @@
 	<body>
 		<div th:replace="fragments/header :: header"></div>
 		<div class="container">
+		<h1>Registro de Restaurantes</h1>
+		<h2><small>Aqui podra registrar los datos de un restaurante</small></h2> 
 			<form th:action="@{/restaurante/registrar}" method="post" th:object="${restaurante}">
 				<div class="form-group">
 					<label for="idrestaurante">ID:</label>
