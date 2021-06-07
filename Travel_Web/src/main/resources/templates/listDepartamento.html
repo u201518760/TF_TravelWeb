@@ -6,7 +6,7 @@
 
 		<meta charset="UTF-8"></meta>
 
-		<title>Restaurantes</title>
+		<title>Listado de Departamentos</title>
 
 		
 
@@ -67,13 +67,13 @@
 							    </tr>
 							</thead>
 							<tbody>
-								<tr th:each="res:${listaDepartamentos}">
-									<td th:text="${res.idDepartamento}"></td>
-							        <td th:text="${res.nombreDepartamento}"></td>
-							        <td><a style="border-bottom-color: green" th:href="@{/departamento/eliminar?id=}+${res.idDepartamento}" 
+								<tr th:each="d:${listaDepartamentos}">
+									<td th:text="${d.idDepartamento}"></td>
+							        <td th:text="${d.nombreDepartamento}"></td>
+							        <td><a style="border-bottom-color: green" th:href="@{/departamento/eliminar?id=}+${d.idDepartamento}" 
 							        	id="add-row" type="button" class="btn btn-primary">
 							        	<span class="glyphicon glyphicon-trash"></span></a></td>
-							        <td><a style="border-bottom-color: green" th:href="@{'/departamento/modificar/'}+${res.idDepartamento}"
+							        <td><a style="border-bottom-color: green" th:href="@{'/departamento/modificar/'}+${d.idDepartamento}"
 							        	id="add-row" type="button" class="btn btn-primary">
 							        	<span class="glyphicon glyphicon-pencil"></span></a></td>
 							    </tr>
