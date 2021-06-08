@@ -64,8 +64,8 @@
 							        <th class="text-center">NOMBRE</th>
 							        <th class="text-center">DIRECCION</th>
 							        <th class="text-center">TELEFONO</th>
-							        <th class="text-center">OPERACION</th>
-							        <th class="text-center">OPERACION</th>
+							        <th class="text-center">ELIMINAR</th>
+							        <th class="text-center">ACTUALIZAR</th>
 							    </tr>
 							</thead>
 							<tbody>
@@ -75,11 +75,11 @@
 							        <td th:text="${res.direccion}"></td>
 							        <td th:text="${res.telefono}"></td>
 							        <td><a style="border-bottom-color: green" th:href="@{/restaurante/eliminar?id=}+${res.idRestaurante}" 
-							        	id="add-row" type="button" class="btn btn-primary">
+							        	id="add-row" type="button" class="btn btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro?');">
 							        	<span class="glyphicon glyphicon-trash"></span></a></td>
 							        <td><a style="border-bottom-color: green" th:href="@{'/restaurante/modificar/'}+${res.idRestaurante}"
-							        	id="add-row" type="button" class="btn btn-primary">
-							        	<span class="glyphicon glyphicon-pencil"></span></a></td>
+							        	id="add-row" type="button" class="btn btn-warning">
+							        	<span class="glyphicon glyphicon-edit"></span></a></td>
 							    </tr>
 							</tbody>
 						</table>

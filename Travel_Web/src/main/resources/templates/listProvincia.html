@@ -41,14 +41,14 @@
 						
 						
 						
-						<table class="table table-bordered table-hover table-striped" id="tab_logic">
+						<table style="text-align:center;" class="table table-bordered table-hover table-striped" id="tab_logic">
 							<thead>
 								<tr>
 									<th class="text-center">CODIGO</th>
 									<th class="text-center">PROVINCIA</th>
 									<th class="text-center">DEPARTAMENTO</th>
-									<th class="text-center">OPERACION</th>
-									<th class="text-center">OPERACION</th>
+									<th class="text-center">ELIMINAR</th>
+									<th class="text-center">ACTUALIZAR</th>
 								</tr>
 							</thead>
 							
@@ -59,11 +59,11 @@
 									<td th:text="${p.departamento.nombreDepartamento}"></td>
 									
 									<td><a style="border-bottom-color: green" th:href="@{/provincia/eliminar?id=}+${p.idProvincia}" 
-							        	id="add-row" type="button" class="btn btn-primary">
+							        	id="add-row" type="button" class="btn btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro?');">
 							        	<span class="glyphicon glyphicon-trash"></span></a></td>
 							        <td><a style="border-bottom-color: green" th:href="@{'/provincia/modificar/'}+${p.idProvincia}"
-							        	id="add-row" type="button" class="btn btn-primary">
-							        	<span class="glyphicon glyphicon-pencil"></span></a></td>
+							        	id="add-row" type="button" class="btn btn-warning">
+							        	<span class="glyphicon glyphicon-edit"></span></a></td>
 								</tr>
 							</tbody>
 						</table>

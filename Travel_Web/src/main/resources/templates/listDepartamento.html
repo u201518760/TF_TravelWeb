@@ -62,8 +62,8 @@
 				        		<tr>
 				        			<th class="text-center">CODIGO</th>
 							        <th class="text-center">NOMBRE</th>
-							        <th class="text-center">OPERACION</th>
-							        <th class="text-center">OPERACION</th>
+							        <th class="text-center">ELIMINAR</th>
+							        <th class="text-center">ACTUALIZAR</th>
 							    </tr>
 							</thead>
 							<tbody>
@@ -71,11 +71,11 @@
 									<td th:text="${d.idDepartamento}"></td>
 							        <td th:text="${d.nombreDepartamento}"></td>
 							        <td><a style="border-bottom-color: green" th:href="@{/departamento/eliminar?id=}+${d.idDepartamento}" 
-							        	id="add-row" type="button" class="btn btn-primary">
+							        	id="add-row" type="button" class="btn btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro?');">
 							        	<span class="glyphicon glyphicon-trash"></span></a></td>
 							        <td><a style="border-bottom-color: green" th:href="@{'/departamento/modificar/'}+${d.idDepartamento}"
-							        	id="add-row" type="button" class="btn btn-primary">
-							        	<span class="glyphicon glyphicon-pencil"></span></a></td>
+							        	id="add-row" type="button" class="btn btn-warning">
+							        	<span class="glyphicon glyphicon-edit"></span></a></td>
 							    </tr>
 							</tbody>
 						</table>

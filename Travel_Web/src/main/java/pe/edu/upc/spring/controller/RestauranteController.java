@@ -38,14 +38,20 @@ public class RestauranteController {
 		return "restaurante";
 	}
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Restaurante objRestaurante,BindingResult binRes, Model model) throws ParseException{
+	public String registrar(@ModelAttribute Restaurante objRestaurante,BindingResult binRes, Model model,RedirectAttributes objRedir) throws ParseException{
 		if(binRes.hasErrors())
 			return "restaurante";
 		else
 		{
+			if(objRestaurante.getNombreRestaurante().length()==0 ||objRestaurante.getDireccion().length()==0 ){
+				model.addAttribute("mensaje", "Complete todos los campos");
+				return "restaurante";
+			}
 			boolean flag=rService.insertar(objRestaurante);
-			if(flag)
+			if(flag) {
+				objRedir.addFlashAttribute("exito", "Se guardo correctamente");
 				return "redirect:/restaurante/listar";
+			}
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
 				return "redirect:/restaurante/irRegistrar";
@@ -66,11 +72,12 @@ public class RestauranteController {
 		}
 	}
 	@RequestMapping("/eliminar")
-	public String eliminar(Map<String,Object> model,@RequestParam(value="id") Integer id) {
+	public String eliminar(Map<String,Object> model,@RequestParam(value="id") Integer id,RedirectAttributes objRedir) {
 		try {
 			if(id!=null && id>0) {
 				rService.eliminar(id);
 				model.put("listaRestaurantes", rService.listar());
+				objRedir.addFlashAttribute("eliminar", "Se elimino correctamente");
 			}
 		}
 		catch(Exception ex) {
