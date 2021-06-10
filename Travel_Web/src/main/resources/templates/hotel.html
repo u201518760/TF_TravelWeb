@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	
+
+		<meta charset="UTF-8"></meta>
+
+		<title>Hotel</title>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+		
+
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+
+				rel="stylesheet" id="bootstrap-css">
+
+		</link>
+
+
+
+		<script
+
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+
+		</script>
+
+		
+
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>		
+
+	</head>
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+		<h1>Registro de Hoteles</h1>
+		<h2><small>Aqui podra registrar los datos de un hotel</small></h2> 
+			<form th:action="@{/hotel/registrar}" method="post" th:object="${hotel}">
+				<div class="form-group">
+					<label for="idhotel">ID:</label>
+					<input type="text" class="form-control" th:field="*{idHotel}"></input>
+					
+					<div class="form-group">
+						<label for="nombre">NOMBRE:</label>
+						<input type="text" class="form-control" th:field="*{nombreHotel}" id="nombre"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nombreHotel')}" 
+							th:errors="*{nombreHotel}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="direccion">DIRECCION:</label>
+						<input type="text" class="form-control" th:field="*{direccion}" id="direccion"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('direccion')}" 
+							th:errors="*{direccion}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="telefono">TELEFONO:</label>
+						<input type="text" maxlength="9" class="form-control" th:field="*{telefono}" id="telefono"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('telefono')}" 
+							th:errors="*{telefono}">
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="precio">PRECIO POR NOCHE:</label>
+						<input type="text" class="form-control" th:field="*{precioHotel}" id="precio"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('precioHotel')}" 
+							th:errors="*{precioHotel}">
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="categoria">CATEGORIA:</label>
+						<input type="text" maxlength="12" class="form-control" th:field="*{categoria}" id="categoria"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('categoria')}" 
+							th:errors="*{categoria}">
+						</div>
+					</div>						
+						
+				</div>
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/hotel/listar" class="btn btn-primary">Cancelar</a>
+				<p th:text="${mensaje}" class="form-text text-danger"></p>
+			</form>
+		</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

@@ -24,7 +24,13 @@ private static final long serialVersionUID = 1L;
 	@Column(name="nombreHotel", nullable=false, length=20)
 	private String nombreHotel;
 	
-	@Column(name="categoria",nullable=false,length=30)
+	@Column(name="direccionHotel",nullable=false,length=30)
+	private String direccion;
+	
+	@Column(name="telefonoHotel",nullable=false, length=9)
+	private int telefono;
+	
+	@Column(name="categoria",nullable=false,length=12)
 	private String categoria;
 	
 	@Column(name="precioHotel",nullable=false)
@@ -35,17 +41,15 @@ private static final long serialVersionUID = 1L;
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
-	public Hotel(int idHotel, String nombreHotel, String categoria, int precioHotel) {
+	public Hotel(int idHotel, String nombreHotel, String direccion, int telefono, String categoria, int precioHotel) {
 		super();
 		this.idHotel = idHotel;
 		this.nombreHotel = nombreHotel;
+		this.direccion = direccion;
+		this.telefono = telefono;
 		this.categoria = categoria;
 		this.precioHotel = precioHotel;
 	}
-
-
 
 	public int getIdHotel() {
 		return idHotel;
@@ -63,6 +67,22 @@ private static final long serialVersionUID = 1L;
 		this.nombreHotel = nombreHotel;
 	}
 
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public int getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+
 	public String getCategoria() {
 		return categoria;
 	}
@@ -71,17 +91,14 @@ private static final long serialVersionUID = 1L;
 		this.categoria = categoria;
 	}
 
-
-
 	public int getPrecioHotel() {
 		return precioHotel;
 	}
 
-
-
 	public void setPrecioHotel(int precioHotel) {
 		this.precioHotel = precioHotel;
 	}
+
 
 
 
