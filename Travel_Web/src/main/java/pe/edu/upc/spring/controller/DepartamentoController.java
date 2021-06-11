@@ -51,15 +51,23 @@ public class DepartamentoController {
 	
 	
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Departamento objDepartamento, BindingResult binRes, Model model) 
+	public String registrar(@ModelAttribute Departamento objDepartamento, BindingResult binRes, Model model, 
+			RedirectAttributes objRedir) 
 			throws ParseException 
 	{
 		if (binRes.hasErrors())
 			return "departamento";
 		else {
+			if(objDepartamento.getNombreDepartamento().length()==0) {
+				model.addAttribute("mensaje","Complete el campo");
+				
+				return "departamento";
+			}
 			boolean flag = dService.insertar(objDepartamento);
-			if (flag) 
+			if (flag) {
+				objRedir.addFlashAttribute("exito", "Se guardo correctamente");
 				return "redirect:/departamento/listar";
+			}
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
 				return "redirect:/departamento/irRegistrar";
@@ -85,11 +93,12 @@ public class DepartamentoController {
 	
 	
 	@RequestMapping("/eliminar")
-	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id) {
+	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id, RedirectAttributes objRedir) {
 		try {
 			if(id!=null && id>0) {
 				dService.eliminar(id);
 				model.put("listaDepartamentos", dService.listar());
+				objRedir.addFlashAttribute("eliminar", "Se elimino correctamente");
 			}
 		}
 		catch(Exception ex) {

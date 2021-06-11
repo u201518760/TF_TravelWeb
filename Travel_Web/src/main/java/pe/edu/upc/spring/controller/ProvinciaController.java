@@ -59,7 +59,8 @@ public class ProvinciaController {
 	
 	
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Provincia objProvincia, BindingResult binRes, Model model) 
+	public String registrar(@ModelAttribute Provincia objProvincia, BindingResult binRes, Model model, 
+			RedirectAttributes objRedir) 
 			throws ParseException 
 
 	{
@@ -69,9 +70,15 @@ public class ProvinciaController {
 			return "provincia";
 		}
 		else {
+			if(objProvincia.getNombreProvincia().length()==0) {
+				model.addAttribute("mensaje", "Complete el campo");
+				return "provincia";
+			}
 			boolean flag = pService.insertar(objProvincia);
-			if (flag) 
+			if (flag) { 
+				objRedir.addFlashAttribute("exito", "Se guardo correctamente");
 				return "redirect:/provincia/listar";
+			}
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
 				return "redirect:/provincia/irRegistrar";
@@ -101,11 +108,12 @@ public class ProvinciaController {
 	
 	
 	@RequestMapping("/eliminar")
-	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id) {
+	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id, RedirectAttributes objRedir) {
 		try {
 			if(id!=null && id>0) {
 				pService.eliminar(id);
 				model.put("listaProvincias", pService.listar());
+				objRedir.addFlashAttribute("eliminar", "Se elimino correctamente");
 			}
 		}
 		catch(Exception ex) {
