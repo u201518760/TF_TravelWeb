@@ -55,10 +55,15 @@
 						</div>
 					</div>	
 					<div class="form-group">
-						<label for="tipo">TIPO DE TRANSPORTE:</label>
-						<input type="text" class="form-control" th:field="*{tipoTransporte}" id="tipo"></input>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('tipoTransporte')}" 
+						<label for="tipo" class="form-label">TIPO DE TRANSPORTE:</label>
+						<br>
+						<label class="radio-inline">
+						<input type="radio" name="optradio" checked th:field="*{tipoTransporte}" id="tipo" value="Terrestre">Terrestre</label>
+						<label class="radio-inline">
+						<input type="radio" name="optradio" th:field="*{tipoTransporte}" id="tipo" value="Aereo">Aereo</label>
+						<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('tipoTransporte')}" 
 							th:errors="*{tipoTransporte}">
+							
 						</div>
 					</div>					
 						

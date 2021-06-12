@@ -57,7 +57,7 @@ public class TransporteController {
 		if (binRes.hasErrors())
 			return "transporte";
 		else {
-			if(objTransporte.getTipoTransporte().length()==0 ||objTransporte.getEmpresa().length()==0 ){
+			if(objTransporte.getEmpresa().length()==0 ){
 				model.addAttribute("mensaje", "Complete todos los campos");
 				return "transporte";
 			}

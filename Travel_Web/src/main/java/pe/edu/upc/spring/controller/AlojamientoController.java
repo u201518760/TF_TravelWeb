@@ -57,7 +57,7 @@ public class AlojamientoController {
 		return "alojamiento";
 	}
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Alojamiento objAlojamiento,BindingResult binRes, Model model) throws ParseException{
+	public String registrar(@ModelAttribute Alojamiento objAlojamiento,BindingResult binRes, Model model,RedirectAttributes objRedir) throws ParseException{
 		if(binRes.hasErrors()) {
 			model.addAttribute("listaRestaurantes", rService.listar());
 			model.addAttribute("listaHoteles", hService.listar());
@@ -67,8 +67,11 @@ public class AlojamientoController {
 		else
 		{
 			boolean flag=aService.insertar(objAlojamiento);
-			if(flag)
+			if(flag) {
+				objRedir.addFlashAttribute("exito", "Se guardo correctamente");
+			
 				return "redirect:/alojamiento/listar";
+			}
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
 				return "redirect:/alojamiento/irRegistrar";
