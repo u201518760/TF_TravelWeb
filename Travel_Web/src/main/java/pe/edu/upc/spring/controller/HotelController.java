@@ -51,15 +51,21 @@ public class HotelController {
 	
 	
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Hotel objHotel, BindingResult binRes, Model model) 
+	public String registrar(@ModelAttribute Hotel objHotel, BindingResult binRes, Model model,RedirectAttributes objRedir) 
 			throws ParseException 
 	{
 		if (binRes.hasErrors())
 			return "hotel";
 		else {
+			if(objHotel.getNombreHotel().length()==0 ||objHotel.getDireccion().length()==0||objHotel.getCategoria().length()==0 ){
+				model.addAttribute("mensaje", "Complete todos los campos");
+				return "hotel";
+			}
 			boolean flag = hService.insertar(objHotel);
-			if (flag) 
+			if (flag) {
+				objRedir.addFlashAttribute("exito", "Se guardo correctamente");
 				return "redirect:/hotel/listar";
+			}
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
 				return "redirect:/hotel/irRegistrar";
@@ -85,11 +91,12 @@ public class HotelController {
 	
 	
 	@RequestMapping("/eliminar")
-	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id) {
+	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id,RedirectAttributes objRedir) {
 		try {
 			if(id!=null && id>0) {
 				hService.eliminar(id);
 				model.put("listaHoteles", hService.listar());
+				objRedir.addFlashAttribute("eliminar", "Se elimino correctamente");
 			}
 		}
 		catch(Exception ex) {

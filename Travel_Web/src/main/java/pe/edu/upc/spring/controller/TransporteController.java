@@ -51,15 +51,21 @@ public class TransporteController {
 	
 	
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute Transporte objTransporte, BindingResult binRes, Model model) 
+	public String registrar(@ModelAttribute Transporte objTransporte, BindingResult binRes, Model model,RedirectAttributes objRedir) 
 			throws ParseException 
 	{
 		if (binRes.hasErrors())
 			return "transporte";
 		else {
+			if(objTransporte.getTipoTransporte().length()==0 ||objTransporte.getEmpresa().length()==0 ){
+				model.addAttribute("mensaje", "Complete todos los campos");
+				return "transporte";
+			}
 			boolean flag = tService.insertar(objTransporte);
-			if (flag) 
+			if (flag) {
+				objRedir.addFlashAttribute("exito", "Se guardo correctamente");
 				return "redirect:/transporte/listar";
+			}
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
 				return "redirect:/transporte/irRegistrar";
@@ -85,11 +91,12 @@ public class TransporteController {
 	
 	
 	@RequestMapping("/eliminar")
-	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id) {
+	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id,RedirectAttributes objRedir) {
 		try {
 			if(id!=null && id>0) {
 				tService.eliminar(id);
 				model.put("listaTransportes", tService.listar());
+				objRedir.addFlashAttribute("eliminar", "Se elimino correctamente");
 			}
 		}
 		catch(Exception ex) {
