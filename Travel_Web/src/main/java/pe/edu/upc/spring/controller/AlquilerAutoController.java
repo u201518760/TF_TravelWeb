@@ -51,15 +51,23 @@ public class AlquilerAutoController {
 	
 	
 	@RequestMapping("/registrar")
-	public String registrar(@ModelAttribute AlquilerAuto objAlquilerAuto, BindingResult binRes, Model model) 
+	public String registrar(@ModelAttribute AlquilerAuto objAlquilerAuto, BindingResult binRes, Model model,RedirectAttributes objRedir) 
 			throws ParseException 
 	{
 		if (binRes.hasErrors())
 			return "alquilerAuto";
 		else {
+			if(objAlquilerAuto.getModeloAlquilerAuto().length()==0) {
+				model.addAttribute("mensaje","Complete todos los campos");
+				
+				return "alquilerAuto";
+			}
 			boolean flag = tService.insertar(objAlquilerAuto);
 			if (flag) 
+			{
+				objRedir.addFlashAttribute("exito", "Se guardo correctamente");
 				return "redirect:/alquilerAuto/listar";
+			}
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
 				return "redirect:/alquilerAuto/irRegistrar";
