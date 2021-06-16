@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com -->
   <title>Safe Travel</title>
@@ -260,7 +260,7 @@
   <br>
   <div class="row slideanim">
     <div class="col-sm-4">
-      <img src="images/logo1.png" alt="Logo de Facebook">
+      <img th:src="@{/imagenes/logo1.png}" width="100" height="100" alt="Logo de Facebook">
       <h4>FACEBOOK</h4>
       <p>Disponible pagina de Facebook</p>
     </div>
