@@ -3,79 +3,85 @@
 
 
 <head>
-		<meta charset="UTF-8"></meta>
-		<title>Listado de Alojamiento</title>	
+<meta charset="UTF-8"></meta>
+<title>Listado de Alojamiento</title>
 
-		<script type="text/javascript"
-				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
-		</script>		
-
-		<link
-			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-			rel="stylesheet" id="bootstrap-css">
-		</link>		
-
-		<script
-			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
 		</script>
-		
 
-		<script src="//code.jquery.com/jquery-1.11.1.min.js">
-		</script>		
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-	</head>
 
 
-	<body>
-		<div th:replace="fragments/header :: header"></div>
-		<div class="container">
+<script src="//code.jquery.com/jquery-1.11.1.min.js">
+		</script>
+
+</head>
+
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
 		<h1>Listado de Alojamientos</h1>
-		
-			<form id="myform">
-				<div class="row clearfix">
-					<div class="col-md-12 column">
-						<a style="border-bottom-color: green" th:href="@{/alojamiento/irRegistrar}"
-							id="add-row" type="button" class="btn btn-primary btn-md left block">
-							<span class="glyphicon glyphicon-plus"></span> Añadir Alojamiento
-						</a>
-						
-						
-						
-						<table style="text-align:center;" class="table table-bordered table-hover table-striped" id="tab_logic">
-							<thead>
-								<tr>
-									<th class="text-center">CODIGO</th>
-									<th class="text-center">HOTEL</th>
-									<th class="text-center">RESTAURANTE</th>
-									<th class="text-center">DEPARTAMENTO</th>
-									<th class="text-center">PROVINCIA</th>
-									<th class="text-center">ELIMINAR</th>
-									<th class="text-center">ACTUALIZAR</th>
-								</tr>
-							</thead>
-							
-							<tbody>
-								<tr th:each="a:${listaAlojamientos}">
-									<td th:text="${a.idAlojamiento}"></td>
-									<td th:text="${a.hotel.nombreHotel}"></td>
-									<td th:text="${a.restaurante.nombreRestaurante}"></td>
-									<td th:text="${a.provincia.departamento.nombreDepartamento}"></td>
-									<td th:text="${a.provincia.nombreProvincia}"></td>
-									
-									<td><a style="border-bottom-color: green" th:href="@{/alojamiento/eliminar?id=}+${a.idAlojamiento}" 
-							        	id="add-row" type="button" class="btn btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro?');">
-							        	<span class="glyphicon glyphicon-trash"></span></a></td>
-							        <td><a style="border-bottom-color: green" th:href="@{'/alojamiento/modificar/'}+${a.idAlojamiento}"
-							        	id="add-row" type="button" class="btn btn-warning">
-							        	<span class="glyphicon glyphicon-edit"></span></a></td>
-								</tr>
-							</tbody>
-						</table>
-						
-					</div>
+
+		<form id="myform">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<a style="border-bottom-color: green"
+						th:href="@{/alojamiento/irRegistrar}" id="add-row" type="button"
+						class="btn btn-primary btn-md left block"> <span
+						class="glyphicon glyphicon-plus"></span> Añadir Alojamiento
+					</a>
+
+
+
+					<table style="text-align: center;"
+						class="table table-bordered table-hover table-striped"
+						id="tab_logic">
+						<thead>
+							<tr>
+								<th class="text-center">CODIGO</th>
+								<th class="text-center">HOTEL</th>
+								<th class="text-center">RESTAURANTE</th>
+								<th class="text-center">DEPARTAMENTO</th>
+								<th class="text-center">PROVINCIA</th>
+								<th class="text-center">ELIMINAR</th>
+								<th class="text-center">ACTUALIZAR</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="a:${listaAlojamientos}">
+								<td th:text="${a.idAlojamiento}"></td>
+								<td th:text="${a.hotel.nombreHotel}"></td>
+								<td th:text="${a.restaurante.nombreRestaurante}"></td>
+								<td th:text="${a.provincia.departamento.nombreDepartamento}"></td>
+								<td th:text="${a.provincia.nombreProvincia}"></td>
+
+								<td><a style="border-bottom-color: green"
+									th:href="@{/alojamiento/eliminar?id=}+${a.idAlojamiento}"
+									id="add-row" type="button" class="btn btn-danger"
+									onclick="return confirm('¿Esta seguro de eliminar el registro?');">
+										<span class="glyphicon glyphicon-trash"></span>
+								</a></td>
+								<td><a style="border-bottom-color: green"
+									th:href="@{'/alojamiento/modificar/'}+${a.idAlojamiento}"
+									id="add-row" type="button" class="btn btn-warning"> <span
+										class="glyphicon glyphicon-edit"></span></a></td>
+							</tr>
+						</tbody>
+					</table>
+
 				</div>
-			</form>
-		</div>
-		<div th:replace="fragments/footer :: footer"></div>
-	</body>
+			</div>
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
 </html>

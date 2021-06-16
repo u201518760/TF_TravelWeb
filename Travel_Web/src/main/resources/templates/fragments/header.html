@@ -2,63 +2,80 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-		<meta charset="UTF-8"></meta>
-		<link
-			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-			rel="stylesheet" id="bootstrap-css">
-		</link>
-		<script
-			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
-		</script>
-	</head>
 
-	<body>
-		<!-- th:fragment define un fragment los cuales sirven para evitar la redundancia de codigo -->
-		<!-- Sintaxis th:fragment="Nombre del fragment" -->
-		<div th:fragment="header">
-			<!-- this is header -->
-			<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-				<div class="container">
-					
-					<div class="navbar-header">
-						<a class="navbar-brand" th:href="@{/departamento/bienvenido}">
-						<img th:src="@{/imagenes/logoTF.png}" width="20" height="20" style="float:left;"></img> 
-						Safe Travel
-						</a>
-					</div>
-					
-					<div id="navbar" class="collapse navbar-collapse">
-					
-						<ul class="nav navbar-nav">
-							<li class="nav-item active"><a class="nav-link" th:href="@{/login}">Login</a></li>
-							<li class="nav-item active"><a class="nav-link" th:href="@{/departamento/listar}">Departamento</a></li>
-							<li class="nav-item active"><a class="nav-link" th:href="@{/provincia/listar}">Provincia</a></li>
-							<li class="nav-item active"><a class="nav-link" th:href="@{/transporte/listar}">Transporte</a></li>
-							<li class="nav-item active"><a class="nav-link" th:href="@{/hotel/listar}">Hotel</a></li>
-							<li class="nav-item active"><a class="nav-link" th:href="@{/alquilerAuto/listar}">Auto</a></li>
-							<li class="nav-item active"><a class="nav-link" th:href="@{/restaurante/listar}">Restaurante</a></li>
-							<li class="nav-item active"><a class="nav-link" th:href="@{/alojamiento/listar}">Alojamiento</a></li>
-	
-						</ul>
-						 
-					</div>
-					
+<head>
+<meta charset="UTF-8"></meta>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+	<!-- th:fragment define un fragment los cuales sirven para evitar la redundancia de codigo -->
+	<!-- Sintaxis th:fragment="Nombre del fragment" -->
+	<div th:fragment="header">
+		<!-- this is header -->
+		<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+			<div class="container">
+
+				<div class="navbar-header">
+					<a class="navbar-brand" th:href="@{/departamento/bienvenido}">
+						<img th:src="@{/imagenes/logoTF.png}" width="20" height="20"
+						style="float: left;"></img> Safe Travel
+					</a>
 				</div>
-			</nav>
-			<div class="alert alert-success alert-dismissible"
-			th:if="${exito!=null}" >
+
+				<div id="navbar" class="collapse navbar-collapse">
+
+					<ul class="nav navbar-nav">
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/departamento/listar}">Departamento</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/provincia/listar}">Provincia</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/transporte/listar}">Transporte</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/hotel/listar}">Hotel</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/alquilerAuto/listar}">Auto</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/restaurante/listar}">Restaurante</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/alojamiento/listar}">Alojamiento</a></li>
+
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown"><button class="dropdown-toggle"
+							data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> superadmin <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/login}">Cerrar Sesion</a></li>
+							</ul></li>
+						
+					</ul>
+
+				</div>
+
+			</div>
+		</nav>
+		<div class="alert alert-success alert-dismissible"
+			th:if="${exito!=null}">
 			<label th:text="${exito}"></label>
 			<button type="button" class="close" data-dismiss="alert"
 				aria-label="close">&times;</button>
-			</div>
-			<div class="alert alert-danger alert-dismissible"
-			th:if="${eliminar!=null}" >
+		</div>
+		<div class="alert alert-danger alert-dismissible"
+			th:if="${eliminar!=null}">
 			<label th:text="${eliminar}"></label>
 			<button type="button" class="close" data-dismiss="alert"
 				aria-label="close">&times;</button>
-			</div>
-	
-	</body>
-	
+		</div>
+	</div>
+
+</body>
+
 </html>
