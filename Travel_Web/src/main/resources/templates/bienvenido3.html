@@ -206,7 +206,6 @@
         <li><a href="#about">QUIENES SOMOS</a></li>
         <li><a href="#services">SERVICIOS</a></li>
         <li><a href="#foro">FORO</a></li>
-        <li><a href="#contact">CONTACTANOS</a></li>
         <li><a href=" login">LOGIN</a></li>
       </ul>
     </div>
@@ -226,15 +225,75 @@
   <div class="row">
     <div class="col-sm-8">
       <h2>QUIENES SOMOS</h2><br>
-      <h4>Somos una empresa a la cual se dedica a brindar un buen servicio de viajes. A la cual es ofrecer a nuestros cliente la mayor seguridad al viajar y puedan conocer lugares turisticos con la mayor informacion que Safe Travel les brindara. </h4><br>
-      <p>Ofrecemos dar un buen servicio a los clientes si se requiere mas informacion de Safe Travel, puede contactar con nosotros...</p>
-      <br><button class="btn btn-default btn-lg">Contactar</button>
+      <h4>Somos una empresa a la cual se dedica a brindar un buen servicio de viajes. A la cual es ofrecer a nuestros cliente la mayor seguridad al viajar 
+      y puedan conocer lugares turisticos con la mayor informacion que Safe Travel les brindara.Para ello, nuestros usuarios contarán con la posibilidad de 
+      interactuar dentro de nuestra plataforma web donde podrán registrarse y consultar todos los planes de viaje que tenemos para ellos. Podrán reservar un
+       boleto de viaje con todas sus características necesarias que requieren para el viaje de sus sueños.
+       </h4><br>
+      <br>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-briefcase logo"></span>
     </div>
   </div>
 </div>
+<center>
+<h2>Nuestro Equipo</h2>
+</center>
+  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+      	<center>
+      	<img th:src="@{/imagenes/carlosclemente.png}"  width="100" height="100" alt="Carlos">
+      	</center><br>
+        <h4>Estudiante de la carrera de Ingeniería de Sistemas, con la disposición de escuchar y apoyar
+         la opinión de todos los integrantes del equipo. Además, se considera muy responsable y perseverante
+          en todos sus objetivos.<br><span>Carlos Clemente Ratachi</span></h4>
+      </div>
+      <div class="item">
+      	<center>
+      	<img th:src="@{/imagenes/hiroshi.jpg}"  width="100" height="100" alt="Hiroshi">
+      	</center><br>
+        <h4>Estudiante de la carrera Ingeniería de Sistemas, dispuesto a trabajar y a brindar el apoyo para todo
+         su equipo. Muy responsable al momento de hacer la presentación de los trabajos<br><span>Hiroshi Leyva Takahashi</span></h4>
+      </div>
+      <div class="item">
+      	<center>
+      	<img th:src="@{/imagenes/josep.jpg}"  width="100" height="100" alt="Josep">
+      	</center><br>
+        <h4>Estudiante de la carrera de Ingeniería de Sistemas de Información, con iniciativa de mostrar apoyo hacia mi
+         equipo de trabajo a través del habla y escucha, dispuesto siempre a la presentación puntual de los trabajos con
+          responsabilidad y eficacia.<br><span>Josep Palomino Quispe</span></h4>
+      </div>
+      <div class="item">
+      	<center>
+      	<img th:src="@{/imagenes/john.png}"  width="100" height="100" alt="John">
+      	</center><br>
+        <h4>Estudiante de la carrera de Ingeniería de Sistemas de Información, con habilidad para formar grupos de trabajo.
+         Ser riguroso y metódico en el trabajo, facilidad para percibir los cambios y capacidad de análisis.<br><span>John
+          Rodríguez Bautista</span></h4>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 
 <div class="container-fluid bg-grey">
   <div class="row">
@@ -269,7 +328,7 @@
       <p>Disponible para brindar servicios en Instagram</p>
     </div>
     <div class="col-sm-4">
-      <img src="imagenes/logo3.png" width="100" height="100" alt="Logo de Whatsapp">
+      <img src="@{/imagenes/logo3.png}" width="100" height="100" alt="Logo de Whatsapp">
       <h4>Whatsapp</h4>
       <p>Disponible para poder realizar consultas por Whatsapp</p>
     </div>
@@ -302,7 +361,7 @@
     <a>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="imagenes/ica.jpg" alt="Ica" width="400" height="300">
+        <img src="@{/imagenes/ica.jpg}" alt="Ica" width="400" height="300">
         <p><strong>ICA</strong></p>
         <p>Un paseo en bote por las Islas Ballestas, un vuelo sobre las líneas de Nasca, una tarde frente a la laguna de la Huacachina.</p>
       </div>
@@ -311,7 +370,7 @@
     <a>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="imagenes/arequipa.jpg" alt="Arequipa" width="400" height="300">
+        <img src="@{/imagenes/arequipa.jpg}" alt="Arequipa" width="400" height="300">
         <p><strong>AREQUIPA</strong></p>
         <p>Arequipa, la ciudad blanca legendaria e histórica, donde la nobleza se respira bajo la vigilancia eterna de sus volcanes.
 ¡Tu destino infaltable! </p>
@@ -321,7 +380,7 @@
     <a>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="imagenes/tumbes.jpg" alt="Tumbes" width="400" height="300">
+        <img src="@{/imagenes/tumbes.jpg}" alt="Tumbes" width="400" height="300">
         <p><strong>TUMBES</strong></p>
         <p>Tumbes es un pequeño departamento fronterizo. Sin embargo, son grandes las experiencias que tiene para ti. Bosques secos ecuatoriales y tropicales del pacífico, manglares, playas de arena de grano fino, comida única y extraordinaria.</p>
       </div>
@@ -330,7 +389,7 @@
     <a>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="imagenes/cusco.jpg" alt="Cusco" width="400" height="300">
+        <img src="@{/imagenes/cusco.jpg}" alt="Cusco" width="400" height="300">
         <p><strong>CUSCO</strong></p>
         <p>En Cusco, cada rincón cuenta una historia y cada historia es cautivante, mística y acogedora. ¿Qué te parecería caminar por calles con estos nombres: Ataúd, Siete Culebras, Purgatorio? </p>
       </div>
@@ -339,7 +398,7 @@
     <a>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="imagenes/amazonas.jpg" alt="Amazonas" width="400" height="300">
+        <img src="@{/imagenes/amazonas.jpg}" alt="Amazonas" width="400" height="300">
         <p><strong>AMAZONAS</strong></p>
         <p>Amazonas, la región de los bosques de niebla, hábitat de orquídeas, osos de anteojos, gallitos de las rocas y del maravilloso colibrí cola de espátula. </p>
       </div>
@@ -348,7 +407,7 @@
     <a>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="imagenes/Loreto.jpg" alt="Loreto" width="400" height="300">
+        <img src="@{/imagenes/Loreto.jpg}" alt="Loreto" width="400" height="300">
         <p><strong>LORETO</strong></p>
         <p>En Loreto hay tanta diversidad como belleza arquitectónica, tanta paz que te desconectarás del mundo.
 Loreto, donde nace el río Amazonas, el río más caudaloso y largo del mundo. </p>
@@ -395,37 +454,9 @@ Loreto, donde nace el río Amazonas, el río más caudaloso y largo del mundo. <
   </div>
 </div>
 
-<!-- Container (Contactos Section) -->
-<div id="contacto" class="container-fluid bg-grey">
-  <h2 class="text-center">CONTACTANOS</h2>
-  <div class="row">
-    <div class="col-sm-5">
-      <p>Contacto disponible las 24 horas del dia</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span> Lima, Peru</p>
-      <p><span class="glyphicon glyphicon-phone"></span> +51 948 569 456</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> safetravel@hotmail.com</p>
-    </div>
-    <div class="col-sm-7 slideanim">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Nombre" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-      </div>
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comentario" rows="5"></textarea><br>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Enviar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Image of location/map -->
-<img src="turismo.jpeg" class="w3-image w3-greyscale-min" style="width:100%">
+<img src="@{/imagenes/turismo.jpeg}" class="w3-image w3-greyscale-min" style="width:100%">
 
 <script>
 $(document).ready(function(){
