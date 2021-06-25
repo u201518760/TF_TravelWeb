@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 
 <head>
@@ -40,23 +40,29 @@
 						<li class="nav-item active"><a class="nav-link"
 							th:href="@{/transporte/listar}">Transporte</a></li>
 						<li class="nav-item active"><a class="nav-link"
-							th:href="@{/hotel/listar}">Hotel</a></li>
-						<li class="nav-item active"><a class="nav-link"
 							th:href="@{/alquilerAuto/listar}">Auto</a></li>
-						<li class="nav-item active"><a class="nav-link"
-							th:href="@{/restaurante/listar}">Restaurante</a></li>
-						<li class="nav-item active"><a class="nav-link"
-							th:href="@{/alojamiento/listar}">Alojamiento</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown"> Alojamiento <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/alojamiento/listar}">Alojamiento</a></li>
+								<li><a th:href="@{/restaurante/listar}">Restaurante</a></li>
+								<li><a th:href="@{/hotel/listar}">Hotel</a></li>
+								
+							</ul></li>
 						<li class="nav-item active"><a class="nav-link"
 							th:href="@{/turista/listar}">Turista</a></li>
+							<li class="nav-item active"><a class="nav-link"
+							th:href="@{/reservaviaje/listar}">Reserva</a></li>
+							
 
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><button class="dropdown-toggle"
-							data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> superadmin <span class="caret"></span></button>
+							data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span sec:authentication="name"></span> <span class="caret"></span></button>
 							<ul class="dropdown-menu">
 								<li><a th:href="@{/home/inicio}">Cerrar Sesion</a></li>
 							</ul></li>
+						
 						
 					</ul>
 

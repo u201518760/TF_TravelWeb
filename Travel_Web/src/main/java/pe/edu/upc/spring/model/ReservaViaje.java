@@ -3,6 +3,7 @@ package pe.edu.upc.spring.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,19 +26,12 @@ public class ReservaViaje implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idReservaViaje;
-	
-	@ManyToOne
-	@JoinColumn(name="idTurista",nullable=false)
-	private Turista idTurista ; 
-	@ManyToOne
-	@JoinColumn(name="idAdministrador",nullable=false)
-	private Turista idAdministrador ; 
 	@ManyToOne
 	@JoinColumn(name="idTransporte",nullable=false)
 	private Transporte transporte; 
 	
-	@ManyToOne
-	@JoinColumn(name="idAlojamiento",nullable=false)
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idAlojamiento" ,nullable=false)
 	private Alojamiento alojamiento;
 	
 	@ManyToOne
@@ -55,7 +48,6 @@ public class ReservaViaje implements Serializable{
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fechaFin;
 	
-	@Transient
 	@Column(name="precio", nullable = false)
 	private int precioReserva;
 
@@ -64,12 +56,10 @@ public class ReservaViaje implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public ReservaViaje(int idReservaViaje, Turista idTurista, Turista idAdministrador, Transporte transporte,
-			Alojamiento alojamiento, AlquilerAuto auto, Date fechaInicio, Date fechaFin, int precioReserva) {
+	public ReservaViaje(int idReservaViaje, Transporte transporte, Alojamiento alojamiento, AlquilerAuto auto,
+			Date fechaInicio, Date fechaFin, int precioReserva) {
 		super();
 		this.idReservaViaje = idReservaViaje;
-		this.idTurista = idTurista;
-		this.idAdministrador = idAdministrador;
 		this.transporte = transporte;
 		this.alojamiento = alojamiento;
 		this.auto = auto;
@@ -84,22 +74,6 @@ public class ReservaViaje implements Serializable{
 
 	public void setIdReservaViaje(int idReservaViaje) {
 		this.idReservaViaje = idReservaViaje;
-	}
-
-	public Turista getIdTurista() {
-		return idTurista;
-	}
-
-	public void setIdTurista(Turista idTurista) {
-		this.idTurista = idTurista;
-	}
-
-	public Turista getIdAdministrador() {
-		return idAdministrador;
-	}
-
-	public void setIdAdministrador(Turista idAdministrador) {
-		this.idAdministrador = idAdministrador;
 	}
 
 	public Transporte getTransporte() {
@@ -149,6 +123,9 @@ public class ReservaViaje implements Serializable{
 	public void setPrecioReserva(int precioReserva) {
 		this.precioReserva = precioReserva;
 	}
+
+	
+
 	
 
 }
