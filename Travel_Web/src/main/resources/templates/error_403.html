@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 
 
@@ -14,17 +14,12 @@
 
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script>
 
-<link
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-
-	rel="stylesheet" id="bootstrap-css"></link>
-
-<script
-
-	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 </head>
 
@@ -36,31 +31,17 @@
 
 
 
-	<div class="container py-4">
-
-
-
-		<div class="card bg-danger text-white">
-
-			<div class="card-header">Error:Acceso Negado!</div>
-
-			<div class="card-body">
-
-				<h5 class="card-title">
-
-					No tienes permiso para acceder a este recurso
-
-				</h5>
-
-				
-
-
-
-			</div>
-
-		</div>
-
-	</div>
+	<div class="page-wrap d-flex flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <span class="display-1 d-block">403</span>
+                <div class="mb-4 lead">Forbidden – You don’t have permission to access.</div>
+                <a href="@{/departamento/bienvenido}" class="btn btn-link">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
