@@ -3,7 +3,6 @@ package pe.edu.upc.spring.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -30,7 +30,7 @@ public class ReservaViaje implements Serializable{
 	@JoinColumn(name="idTransporte",nullable=false)
 	private Transporte transporte; 
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="idAlojamiento" ,nullable=false)
 	private Alojamiento alojamiento;
 	
@@ -48,16 +48,16 @@ public class ReservaViaje implements Serializable{
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fechaFin;
 	
+	@Transient
+	private int diasReserva;
 	@Column(name="precio", nullable = false)
 	private int precioReserva;
-
 	public ReservaViaje() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public ReservaViaje(int idReservaViaje, Transporte transporte, Alojamiento alojamiento, AlquilerAuto auto,
-			Date fechaInicio, Date fechaFin, int precioReserva) {
+			Date fechaInicio, Date fechaFin, int diasReserva, int precioReserva) {
 		super();
 		this.idReservaViaje = idReservaViaje;
 		this.transporte = transporte;
@@ -65,67 +65,56 @@ public class ReservaViaje implements Serializable{
 		this.auto = auto;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
+		this.diasReserva = diasReserva;
 		this.precioReserva = precioReserva;
 	}
-
 	public int getIdReservaViaje() {
 		return idReservaViaje;
 	}
-
 	public void setIdReservaViaje(int idReservaViaje) {
 		this.idReservaViaje = idReservaViaje;
 	}
-
 	public Transporte getTransporte() {
 		return transporte;
 	}
-
 	public void setTransporte(Transporte transporte) {
 		this.transporte = transporte;
 	}
-
 	public Alojamiento getAlojamiento() {
 		return alojamiento;
 	}
-
 	public void setAlojamiento(Alojamiento alojamiento) {
 		this.alojamiento = alojamiento;
 	}
-
 	public AlquilerAuto getAuto() {
 		return auto;
 	}
-
 	public void setAuto(AlquilerAuto auto) {
 		this.auto = auto;
 	}
-
 	public Date getFechaInicio() {
 		return fechaInicio;
 	}
-
 	public void setFechaInicio(Date fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-
 	public Date getFechaFin() {
 		return fechaFin;
 	}
-
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-
+	public int getDiasReserva() {
+		return diasReserva;
+	}
+	public void setDiasReserva(int diasReserva) {
+		this.diasReserva = diasReserva;
+	}
 	public int getPrecioReserva() {
 		return precioReserva;
 	}
-
 	public void setPrecioReserva(int precioReserva) {
 		this.precioReserva = precioReserva;
 	}
-
 	
-
-	
-
 }

@@ -31,6 +31,13 @@
 				<div class="form-group">
 					<label for="idalojamiento">ID:</label>
 					<input type="text" class="form-control" th:field="*{idAlojamiento}"></input>
+					<div class="form-group">
+						<label for="descripcionAlojamiento">DESCRIPCION:</label>
+						<input type="text" class="form-control" th:field="*{descripcionAlojamiento}" id="descripcionAlojamiento"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('descripcionAlojamiento')}" 
+							th:errors="descripcionAlojamiento">
+						</div>
+					</div>
 					
 					<div class="form-group">	
 						

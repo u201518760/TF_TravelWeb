@@ -2,6 +2,7 @@ package pe.edu.upc.spring.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,9 @@ public class Alojamiento implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idAlojamiento;
+	
+	@Column(length = 30,name="descripcion_Alojamiento",nullable=false)
+	private String descripcionAlojamiento;
 	
 	@ManyToOne
 	@JoinColumn(name="idHotel", nullable=false)
@@ -36,9 +40,11 @@ public class Alojamiento implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Alojamiento(int idAlojamiento, Hotel hotel, Restaurante restaurante, Provincia provincia) {
+	public Alojamiento(int idAlojamiento, String descripcionAlojamiento, Hotel hotel, Restaurante restaurante,
+			Provincia provincia) {
 		super();
 		this.idAlojamiento = idAlojamiento;
+		this.descripcionAlojamiento = descripcionAlojamiento;
 		this.hotel = hotel;
 		this.restaurante = restaurante;
 		this.provincia = provincia;
@@ -50,6 +56,14 @@ public class Alojamiento implements Serializable{
 
 	public void setIdAlojamiento(int idAlojamiento) {
 		this.idAlojamiento = idAlojamiento;
+	}
+
+	public String getDescripcionAlojamiento() {
+		return descripcionAlojamiento;
+	}
+
+	public void setDescripcionAlojamiento(String descripcionAlojamiento) {
+		this.descripcionAlojamiento = descripcionAlojamiento;
 	}
 
 	public Hotel getHotel() {
@@ -75,7 +89,6 @@ public class Alojamiento implements Serializable{
 	public void setProvincia(Provincia provincia) {
 		this.provincia = provincia;
 	}
+
 	
-
-
 }

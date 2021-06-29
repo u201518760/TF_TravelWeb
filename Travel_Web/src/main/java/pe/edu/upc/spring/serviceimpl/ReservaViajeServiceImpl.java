@@ -58,11 +58,15 @@ public class ReservaViajeServiceImpl implements IReservaViajeService{
 		return dReserva.findById(idReservaViaje);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	@Transactional(readOnly=true)
 	public List<ReservaViaje> listar() {
-		// TODO Auto-generated method stub
-		return dReserva.findAll();
+		List<ReservaViaje> lista=dReserva.listaDatos();
+		for(ReservaViaje r:lista) {
+			r.setDiasReserva(r.getFechaFin().getDate()-r.getFechaInicio().getDate());
+		}
+		return lista;
 	}
 
 }

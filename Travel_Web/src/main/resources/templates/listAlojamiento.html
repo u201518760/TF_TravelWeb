@@ -47,6 +47,7 @@
 						<thead>
 							<tr>
 								<th class="text-center">CODIGO</th>
+								<th class="text-center">DESCRIPCION</th>
 								<th class="text-center">HOTEL</th>
 								<th class="text-center">RESTAURANTE</th>
 								<th class="text-center">DEPARTAMENTO</th>
@@ -59,6 +60,7 @@
 						<tbody>
 							<tr th:each="a:${listaAlojamientos}">
 								<td th:text="${a.idAlojamiento}"></td>
+								<td th:text="${a.descripcionAlojamiento}"></td>
 								<td th:text="${a.hotel.nombreHotel}"></td>
 								<td th:text="${a.restaurante.nombreRestaurante}"></td>
 								<td th:text="${a.provincia.departamento.nombreDepartamento}"></td>
