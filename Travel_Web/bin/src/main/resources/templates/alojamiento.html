@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+		<meta charset="UTF-8"></meta>
+		<title>Registro del Alojamiento</title>	
+
+		<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>	
+
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+
+		</link>
+
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>	
+
+	</head>
+
+
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form th:action="@{/alojamiento/registrar}" method="post" th:object="${alojamiento}">
+				<div class="form-group">
+					<label for="idalojamiento">ID:</label>
+					<input type="text" class="form-control" th:field="*{idAlojamiento}"></input>
+					<div class="form-group">
+						<label for="descripcionAlojamiento">DESCRIPCION:</label>
+						<input type="text" class="form-control" th:field="*{descripcionAlojamiento}" id="descripcionAlojamiento"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('descripcionAlojamiento')}" 
+							th:errors="descripcionAlojamiento">
+						</div>
+					</div>
+					
+					<div class="form-group">	
+						
+						<label for="hotel" class="col-sm-0 col-form-label">HOTEL:</label>
+						<select class= "form-control" th:field= "*{hotel.idHotel}">
+							<option th:each="h: ${listaHoteles}" 
+								th:value= "${h.idHotel}" 
+								th:text="${h.nombreHotel}" 
+								th:selected="(${h.idHotel}== *{hotel.idHotel})">
+							</option>
+						</select>	
+					</div>
+					
+					<div class="form-group">	
+						
+						<label for="restaurante" class="col-sm-0 col-form-label">RESTAURANTE:</label>
+						<select class= "form-control" th:field= "*{restaurante.idRestaurante}">
+							<option th:each="r: ${listaRestaurantes}" 
+								th:value= "${r.idRestaurante}" 
+								th:text="${r.nombreRestaurante}" 
+								th:selected="(${r.idRestaurante}== *{restaurante.idRestaurante})">
+							</option>
+						</select>	
+					</div>
+					<div class="form-group">	
+						
+						<label for="departamento" class="col-sm-0 col-form-label">DEPARTAMENTO:</label>
+						<select class= "form-control" th:field= "*{provincia.idProvincia}">
+							<option th:each="p: ${listaProvincias}" 
+								th:value= "${p.idProvincia}" 
+								th:text="${p.departamento.nombreDepartamento}" 
+								th:selected="(${p.idProvincia}== *{provincia.idProvincia})">
+							</option>
+						</select>	
+					</div>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/alojamiento/listar" class="btn btn-primary">Cancelar</a>
+				
+			</form>
+		</div>
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+</html>

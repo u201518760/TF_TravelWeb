@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	
+
+		<meta charset="UTF-8"></meta>
+
+		<title>Turista</title>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+		
+
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+
+				rel="stylesheet" id="bootstrap-css">
+
+		</link>
+
+
+
+		<script
+
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+
+		</script>
+
+		
+
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>		
+
+	</head>
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+		<h1>Registro de Turistas</h1>
+		<h2><small>Aqui podra registrar los datos de un turista</small></h2> 
+			<form th:action="@{/turista/registrar}" method="post" th:object="${turista}">
+				<div class="form-group">
+					<label for="idturista">ID:</label>
+					<input type="text" class="form-control" th:field="*{idTurista}"></input>
+					
+					<div class="form-group">
+						<label for="nombre">NOMBRE:</label>
+						<input type="text" class="form-control" th:field="*{nombreTurista}" id="nombre"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nombreTurista')}" 
+							th:errors="*{nombreTurista}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="dniTurista">DNI:</label>
+						<input type="text" class="form-control" th:field="*{dniTurista}" id="dniTurista"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('dniTurista')}" 
+							th:errors="*{dniTurista}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="tlfTurista">TELEFONO:</label>
+						<input type="text" maxlength="9" class="form-control" th:field="*{tlfTurista}" id="tlfTurista"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('tlfTurista')}" 
+							th:errors="*{tlfTurista}">
+						</div>
+					</div>		
+					<div class="form-group">
+						<label for="userTurista">USUARIO:</label>
+						<input type="text" maxlength="9" class="form-control" th:field="*{userTurista}" id="userTurista"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('userTurista')}" 
+							th:errors="*{userTurista}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="passTurista">CONTRASEÑA:</label>
+						<input type="password" maxlength="9" class="form-control" th:field="*{passTurista}" id="passTurista"></input>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('passTurista')}" 
+							th:errors="*{passTurista}">
+						</div>
+					</div>				
+						
+				</div>
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/turista/listar" class="btn btn-primary">Cancelar</a>
+				<p th:text="${mensaje}" class="form-text text-danger"></p>
+			</form>
+		</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

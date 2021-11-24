@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<meta charset="UTF-8"></meta>
+<title>Registro del Viajes</title>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+
+</link>
+
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+
+<script type="text/javascript" th:src="@{/js/race.js}"></script>
+
+</head>
+
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<form th:action="@{/reservaviaje/registrar}" method="post"
+			th:object="${reservaviaje}">
+			<div class="form-group">
+				<label for="idreserva">ID:</label> <input type="text"
+					class="form-control" th:field="*{idReservaViaje}"></input>
+
+				<div class="form-group">
+
+					<label for="transporte" class="col-sm-0 col-form-label">TRANSPORTE:</label>
+					<select class="form-control" th:field="*{transporte.idTransporte}">
+						<option th:each="t: ${listaTransportes}"
+							th:value="${t.idTransporte}" th:text="${t.Empresa}"
+							th:selected="(${t.idTransporte}== *{transporte.idTransporte})">
+						</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+
+					<label for="auto" class="col-sm-0 col-form-label">AUTO:</label> <select
+						class="form-control" th:field="*{auto.idAlquilerAuto}">
+						<option th:each="al: ${listaAlquilerAutos}"
+							th:value="${al.idAlquilerAuto}"
+							th:text="${al.modeloAlquilerAuto}"
+							th:selected="(${al.idAlquilerAuto}== *{auto.idAlquilerAuto})">
+						</option>
+					</select>
+				</div>
+				<div class="form-group">
+
+					<label for="destino" class="col-sm-0 col-form-label">DESTINO</label>
+					<table style="text-align: center;"
+						class="table table-bordered table-hover table-striped"
+						id="tab_logic">
+						<thead>
+							<tr>
+								<th class="text-center">ALOJAMIENTO</th>
+								<th class="text-center">DEPARTAMENTO</th>
+								<th class="text-center">PROVINCIA</th>
+								<th class="text-center">HOTEL</th>
+								<th class="text-center">RESTAURANTE</th>
+								
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="a:${listaAlojamientos}">
+								<td th:text="${a.descripcionAlojamiento}"></td>
+								<td th:text="${a.provincia.departamento.nombreDepartamento}"></td>
+								<td th:text="${a.provincia.nombreProvincia}"></td>
+								<td th:text="${a.hotel.nombreHotel}"></td>
+								<td th:text="${a.restaurante.nombreRestaurante}"></td>
+								
+							</tr>
+
+						</tbody>
+					</table>
+					<select
+						class="form-control" th:field="*{alojamiento.idAlojamiento}">
+						<option th:each="a: ${listaAlojamientos}"
+							th:value="${a.idAlojamiento}"
+							th:text="${a.descripcionAlojamiento}"
+							th:selected="(${a.idAlojamiento}== *{alojamiento.idAlojamiento})">
+						</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="fechaInicio">FECHA INICIO:</label> <input type="date"
+						class="form-control" th:field="*{fechaInicio}" id="fechaInicio"></input>
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('fechaInicio')}"
+						th:errors="*{fechaInicio}"></div>
+				</div>
+				<div class="form-group">
+					<label for="fechaFin">FECHA FIN:</label> <input type="date"
+						class="form-control" th:field="*{fechaFin}" id="fechaFin"></input>
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}">
+					</div>
+				</div>
+
+
+			</div>
+
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/reservaviaje/listar" class="btn btn-primary">Cancelar</a>
+
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

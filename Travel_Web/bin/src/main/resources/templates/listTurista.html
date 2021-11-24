@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	
+
+		<meta charset="UTF-8"></meta>
+
+		<title>Turistas</title>
+
+		
+
+		<script type="text/javascript"
+
+				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+
+		</script>
+
+		
+
+		<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		
+		
+
+		<script src="//code.jquery.com/jquery-1.11.1.min.js">
+
+		</script>
+
+		
+
+	</head>
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+		<h1>Listado de Turistas</h1> 
+		<h2><small>Aqui podra visualizar, eliminar y modificar los datos de un turista</small></h2> 
+			<form id="myform">
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<a style="border-bottom-color: green" th:href="@{/turista/irRegistrar}"
+							id="add-row" type="button" class="btn btn-primary btn-md left-block">
+							<span class="glyphicon glyphicon-plus"></span>Nuevo Turista 
+						</a>
+						
+				        <table style="text-align:center;" class="table table-bordered table-hover table-striped" id="tab_logic">
+				        	<thead>
+				        		<tr>
+				        			<th class="text-center">CODIGO</th>
+							        <th class="text-center">NOMBRE</th>
+							        <th class="text-center">DNI</th>
+							        <th class="text-center">TELEFONO</th>
+							        <th class="text-center">USUARIO</th>
+							        <th class="text-center">CONTRASEÑA</th>
+							        <th class="text-center">ELIMINAR</th>
+							        <th class="text-center">ACTUALIZAR</th>
+							    </tr>
+							</thead>
+							<tbody>
+								<tr th:each="res:${listaTuristas}">
+									<td th:text="${res.idTurista}"></td>
+							        <td th:text="${res.nombreTurista}"></td>
+							        <td th:text="${res.dniTurista}"></td>
+							        <td th:text="${res.tlfTurista}"></td>
+							        <td th:text="${res.userTurista}"></td>
+							        <td th:text="${res.passTurista}"></td>
+							        <td><a style="border-bottom-color: green" th:href="@{/turista/eliminar?id=}+${res.idTurista}" 
+							        	id="add-row" type="button" class="btn btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro?');">
+							        	<span class="glyphicon glyphicon-trash"></span></a></td>
+							        <td><a style="border-bottom-color: green" th:href="@{'/turista/modificar/'}+${res.idTurista}"
+							        	id="add-row" type="button" class="btn btn-warning">
+							        	<span class="glyphicon glyphicon-edit"></span></a></td>
+							    </tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div th:if="${mensaje}" class="alert alert-danger">
+					<p th:text="${mensaje}"></p>
+				</div>
+			</form>
+		</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

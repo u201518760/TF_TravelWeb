@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+		<meta charset="UTF-8"></meta>
+		<title>Registro de Provincias</title>	
+
+		<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>	
+
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+
+		</link>
+
+
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+
+		
+		<script type="text/javascript" th:src="@{/js/race.js}"></script>	
+
+	</head>
+
+
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+			<form th:action="@{/provincia/registrar}" method="post" th:object="${provincia}">
+				<div class="form-group">
+					<label for="idprovincia">ID:</label>
+					<input type="text" class="form-control" th:field="*{idProvincia}"></input>
+					
+					<div class="form-group">
+						<label for="nombre">NOMBRE:</label>
+						<input type="text" class="form-control" th:field="*{nombreProvincia}" id="nombre"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nombreProvincia')}"
+						th:errors="*{nombreProvincia}">
+						</div>
+						
+						
+						
+						
+						<label for="raza" class="col-sm-0 col-form-label">DEPARTAMENTO:</label>
+						<select class= "form-control" th:field= "*{departamento.idDepartamento}">
+							<option th:each="d: ${listaDepartamentos}" 
+								th:value= "${d.idDepartamento}" 
+								th:text="${d.nombreDepartamento}" 
+								th:selected="(${d.idDepartamento}== *{departamento.idDepartamento})">
+							</option>
+						</select>
+						
+						
+						
+						
+						
+					</div>
+					
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/provincia/listar" class="btn btn-primary">Cancelar</a>
+				<p th:text="${mensaje}" class="form-text text-danger"></p>
+			</form>
+		</div>
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+</html>

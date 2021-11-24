@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+		<meta charset="UTF-8"></meta>
+		<title>Listado de Reservas</title>	
+
+		<script type="text/javascript"
+				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>		
+
+		<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		
+
+		<script src="//code.jquery.com/jquery-1.11.1.min.js">
+		</script>		
+
+	</head>
+
+
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		<div class="container">
+		<h1>Listado de Reservas por Turista</h1>
+		
+			<form id="myform">
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<a style="border-bottom-color: green" th:href="@{/reservaviaje/irRegistrar}"
+							id="add-row" type="button" class="btn btn-primary btn-md left block">
+							<span class="glyphicon glyphicon-plus"></span> Añadir Reserva
+						</a>
+						
+						
+						
+						<table style="text-align:center;" class="table table-bordered table-hover table-striped" id="tab_logic">
+							<thead>
+								<tr>
+									<th class="text-center">ID</th>
+									<th class="text-center">TRANSPORTE</th>
+									<th class="text-center">AUTO</th>
+									<th class="text-center">DEPARTAMENTO</th>
+									<th class="text-center">PROVINCIA</th>
+									<th class="text-center">HOTEL</th>
+									<th class="text-center">RESTAURANTE</th>
+									<th class="text-center">FECHA INICIO</th>
+									<th class="text-center">FECHA FIN</th>
+									<th class="text-center">DIAS RESERVA</th>
+									<th class="text-center">PRECIO TOTAL</th>
+									<th class="text-center">ELIMINAR</th>
+									<th class="text-center">ACTUALIZAR</th>
+									
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr th:each="r:${listaReservaViajes}">
+									<td th:text="${r.idReservaViaje}"></td>
+									<td th:text="${r.transporte.tipoTransporte}"></td>
+									<td th:text="${r.auto.modeloAlquilerAuto}"></td>
+									<td th:text="${r.alojamiento.provincia.departamento.nombreDepartamento}"></td>
+									<td th:text="${r.alojamiento.provincia.nombreProvincia}"></td>
+									<td th:text="${r.alojamiento.hotel.nombreHotel}"></td>
+									<td th:text="${r.alojamiento.restaurante.nombreRestaurante}"></td>
+									<td th:text="${r.fechaInicio}"></td>
+									<td th:text="${r.fechaFin}"></td>
+									<td th:text="${r.diasReserva}"></td>
+									<td th:text="${(r.transporte.precioTransporte+r.auto.precioAlquilerAuto+r.alojamiento.hotel.precioHotel)*r.diasReserva}"></td>
+									
+									<td><a style="border-bottom-color: green" th:href="@{/reservaviaje/eliminar?id=}+${r.idReservaViaje}" 
+							        	id="add-row" type="button" class="btn btn-danger" onclick="return confirm('¿Esta seguro de eliminar la reserva?');">
+							        	<span class="glyphicon glyphicon-trash"></span></a></td>
+							        <td><a style="border-bottom-color: green" th:href="@{'/reservaviaje/modificar/'}+${r.idReservaViaje}"
+							        	id="add-row" type="button" class="btn btn-warning">
+							        	<span class="glyphicon glyphicon-edit"></span></a></td>
+								</tr>
+							</tbody>
+						</table>
+						
+					</div>
+				</div>
+			</form>
+		</div>
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+</html>
